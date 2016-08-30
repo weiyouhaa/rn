@@ -13,7 +13,7 @@ class H1 extends Component {
     return (
       <View>
       <Text style = {styles.Text}>
-      {this.props.children}
+      '{this.props.children}'
       </Text>
       </View>
     );

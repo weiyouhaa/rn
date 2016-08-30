@@ -1,29 +1,46 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, { Component,PropTypes} from 'react';
+// import { NavigatorIOS } from 'react-native';
+import h1 from '../component/Text';
 import {
-	
-	StyleSheet,
-	Text,
-	View,
-	ListView,
-	Image,
-	TouchableHighlight,
-	NavigatorIOS
+  StyleSheet,
+  Text,
+  View,
+  ListView,
+  Image,
+  TouchableHighlight,
+  NavigatorIOS,
 } from 'react-native';
-import H1 from '../component/Text';
+
+// class movieList extends Component {
+//   render() {
+//     return (
+//       <NavigatorIOS
+//       initialRoute={{
+//         component:movielist1,
+//         title:'movieList',
+//       }}
+//       style = {{flex:1}}
+//       />
+//     );
+//   }
+// }
+
+
 
 class movieList extends Component {
+ // static propTypes = {
+ //    title: PropTypes.string.isRequired,
+ //    navigator: PropTypes.object.isRequired,
+ //  }
 
-  //construtor
-  constructor(props){
-  	super(props);
-  	//const navigator = {navigator};	
+  constructor(props,context){
+  	super(props,context);
   	this._touchEvent = this._touchEvent.bind(this);		
   	this.fetchDate = this.fetchDate.bind(this);
   	this.querry_url = 'https://api.douban.com/v2/movie/in_theaters';
   	this.state = {
-      // book : '',
       loaded: false,
       movie: new ListView.DataSource({
       	rowHasChanged:(row1,row2)=>row1 !==row2
@@ -38,16 +55,10 @@ class movieList extends Component {
   }
 
   fetchDate(){
+     console.log('ok');
   	fetch(this.querry_url)
   	.then(response => response.json())
   	.then(responseData =>{
-      // this.state.book = responseData.pubdate;
-      // var jk = responseData.pubdate;
-      // console.log(jk);
-      // return jk;
-      // console.log(this.state.book);
-        // console.log(responseData.subjects);
-        // console.log(typeof(navigator));	
         this.setState({
         	movie : this.state.movie.cloneWithRows(responseData.subjects),
         	loaded:true
@@ -59,14 +70,15 @@ class movieList extends Component {
   onPress_event(){
   	this.props.navigator.push({
   		title:'movie.title',
-  		Component: H1,
+  		component: h1,
   	});
   }
 
   _renderRow(movie){
   	return(
+    
   		<TouchableHighlight
-  		onPress ={ ()=>{this.onPress_event()}}>
+  		onPress ={()=>{this.onPress_event()}}>
   		<View style = 
   		{
   			{flex : 1, 

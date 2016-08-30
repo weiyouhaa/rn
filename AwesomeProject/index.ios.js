@@ -19,7 +19,7 @@ import {
   Image,
   TouchableHighlight,
   TabBarIOS,
-  NavigatorIOS
+  NavigatorIOS,
 } from 'react-native';
 
 class AwesomeProject extends Component {
@@ -46,7 +46,14 @@ class AwesomeProject extends Component {
             this.setState({
               selectedTab: 'list'
             });}} >
-          <Movies/>
+             <NavigatorIOS
+      initialRoute={{
+        component:Movies,
+        title:'movieList',
+      }}
+      style = {{flex:1}}
+      />
+          
         </TabBarIOS.Item> 
 
         <TabBarIOS.Item
