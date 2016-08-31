@@ -67,10 +67,12 @@ class movieList extends Component {
   	.done();
   }
 
-  onPress_event(){
+  onPress_event(movie){
   	this.props.navigator.push({
-  		title:'movie.title',
+  		title:'电影简介',
   		component: h1,
+      barTintColor:'#2961A9',
+      passProps: {movie}
   	});
   }
 
@@ -78,7 +80,7 @@ class movieList extends Component {
   	return(
     
   		<TouchableHighlight
-  		onPress ={()=>{this.onPress_event()}}>
+  		onPress ={()=>{this.onPress_event(movie)}}>
   		<View style = 
   		{
   			{flex : 1, 
@@ -90,11 +92,7 @@ class movieList extends Component {
   } }>
 
 
-  <Image 
-  style = {{
-   	// overflow:'hidden',
-   }}
-   source = {{uri:movie.images.medium}} style = {{height:80,width:80}}/>
+  <Image source = {{uri:movie.images.medium}} style = {{height:80,width:80}}/>
 
    <Text
    style = {{
