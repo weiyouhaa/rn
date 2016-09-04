@@ -6,10 +6,13 @@
 // const styles1 = require('./style/styles');÷
 // import styles1  from './style/styles.js';
 // import movieList from './component/movieList';
-import H1 from './component/Text';
+import H1 from './component/movies.js';
 import Movies from './component/movieList';
 import MovieDetial from './component/MovieDetial';
-import React, { Component } from 'react';
+const { BlurView, VibrancyView } = require('react-native-blur');
+import React, {
+  Component
+} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -27,7 +30,7 @@ class AwesomeProject extends Component {
     super(props);
 
     this.state = {
-      selectedTab:'list'
+      selectedTab: 'list'
     };
   }
   render() {
@@ -49,10 +52,11 @@ class AwesomeProject extends Component {
              <NavigatorIOS
       initialRoute={{
         component:Movies,
-        title:'movieList',
+        title:'热门电影top20',
+        barTintColor:'#2554AB',
+        shadowHidden:false,
       }}
-      style = {{flex:1}}
-      />
+      style = {{flex:1}}/>
           
         </TabBarIOS.Item> 
 
@@ -70,7 +74,7 @@ class AwesomeProject extends Component {
         </TabBarIOS.Item>
 
       </TabBarIOS>
-          );
+    );
   }
 }
 
@@ -79,15 +83,15 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'flex_start',
     // alignItems: 'center',
-    marginTop:20,
-    padding:3,
+    marginTop: 20,
+    padding: 3,
     backgroundColor: '#3EA9B7',
   },
-  view1:{
-    marginTop:20,
-    borderWidth:2,
-    borderColor:'#36919B',
-    height:40,
+  view1: {
+    marginTop: 20,
+    borderWidth: 2,
+    borderColor: '#36919B',
+    height: 40,
   },
   welcome: {
     fontSize: 20,
@@ -99,8 +103,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  test:{
-    fontSize:66,
+  test: {
+    fontSize: 66,
   }
 });
 
